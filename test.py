@@ -39,6 +39,8 @@ class Program:
         print(dolar + " " + "złoty")
 
 if __name__ == "__main__":
-    Program.euroScrap()
-    Program.dolarScrap()
-
+    try:
+        Program.euroScrap()
+        Program.dolarScrap()
+    except:
+        print("ERROR. CHECK YOUR INTERNET CONNECTION")
