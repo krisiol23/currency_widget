@@ -1,12 +1,11 @@
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 
-tab = []
+
 class Program:
+    tab = []
     def __init__(self):
-        self.dolar = ""
-        self.euro = ""
-        #print(self.dolar)
+        pass
 
     def euroScrap():
 
@@ -15,12 +14,12 @@ class Program:
         uClient.close()
 
         page_soup = soup(page_html, "html.parser")
-        euro = page_soup.findAll("span", {"class": "kurs kurs_sredni bem-single-rate-box__item-rate"})
+        euro = page_soup.findAll("span", {"data-rates-direction": "forex"})
         
 
         for i in euro:
             euro = i.text
-        #tab.append(euro)
+        
         print("Euro:")
         print(euro +" " + "złoty")
 
@@ -30,11 +29,11 @@ class Program:
         uClient.close()
 
         page_soup = soup(page_html, "html.parser")
-        dolar = page_soup.findAll("span", {"class": "kurs kurs_sredni bem-single-rate-box__item-rate"})
+        dolar = page_soup.findAll("span", {"data-rates-direction": "forex"})
 
         for i in dolar:
             dolar = i.text
-        #tab.append(dolar)
+        
         print("Dolar:")
         print(dolar + " " + "złoty")
 
